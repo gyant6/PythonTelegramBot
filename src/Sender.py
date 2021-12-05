@@ -53,7 +53,7 @@ def edit_message(bot, chat_id, message_id, text):
 
 
 def echo_after_message(bot, chat_id, message_id, text):
-    cmd = text.split()
+    cmd = text.split(" ", 1)
     if cmd[0] != commands["echo_after"]:
         return 'ok'
     if len(cmd) < 2:
@@ -61,7 +61,7 @@ def echo_after_message(bot, chat_id, message_id, text):
                         text="Please add something after /echo_after for me to echo",
                         reply_to_message_id=message_id)
     else:
-        msg = cmd[1].strip("", 1)
+        msg = cmd[1].strip()
         bot.sendMessage(chat_id=chat_id, text=msg, reply_to_message_id=message_id)
     return
 
